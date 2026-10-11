@@ -94,6 +94,8 @@ button {
     height: 4%;
     border: 3px solid rgb(173, 190, 216);
     padding: 10px;
+    justify-content: center;
+    text-align: center;
     gap: 5%;
     top: 18%;
     left: 44.5%;
@@ -109,6 +111,8 @@ button {
     background: transparent;
     color: #000000;
     font-size: 1.3rem;
+    justify-content: center;
+    text-align: center;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -168,26 +172,50 @@ button {
     position: absolute;
 }
 
+/* קונטיינר מרכזי לתצוגת המילה */
 .word-paragraph {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
-    top: 50%;
+    align-items: center;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
     position: absolute;
+    width: auto;
+    max-width: 85vw;
+    z-index: 2;
 }
 
+/* התיבה העוטפת את המילים/אותיות */
 .word {
     display: flex;
-    gap: 1.8rem;
-    width: 100%;
-    left: 50%;
-    font-family: "alef";
-    transform: translate(-50%);
-    position: absolute;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.6rem; /* מרווח קבוע ונקי בין התיבות */
+    direction: rtl; /* מבטיח סדר אותיות נכון מימין לשמאל */
+}
+
+/* תיבה בודדת לכל אות קו תחתון */
+.letter-slot {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;               /* רוחב קו תחתון בודד */
+    height: 2.8rem;             /* גובה התיבה */
+    border-bottom: 3px solid #000; /* הקו התחתון הנקי */
+    font-family: "alef", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+/* מרווח מיוחד במקרה של רווח בין מילים */
+.letter-slot.space {
+    border-bottom: none;
+    width: 1rem;
 }
 
 .keyboard {
@@ -383,20 +411,140 @@ button {
     }
 }
 
+/* ==========================================
+   הגדרות רספונסיביות - מקסימום 550px
+   ========================================== */
 @media screen and (max-width: 550px) {
     .title {
-        font-size: 3rem;
+        font-size: 1.8rem;
+        top: 4%;
+    }
+
+    .countdown-timer, .score {
+        font-size: 1.1rem;
+        width: 75px;
+        height: 32px;
+        top: 1.5%;
+    }
+
+    .score { left: 2%; }
+    .countdown-timer { right: 2%; }
+
+    .toggle {
+        left: 35%;
+        width: 140px;
+        height: 28px;
+        top: 13.5%;
+    }
+
+    .toggle button {
+        font-size: 0.8rem;
     }
 
     .paragraph {
-        font-size: 1.5rem;
+        top: 22%;
     }
-    
+
+    .guess {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
     .hintBtn {
-        font-size: 1.5rem;
+        font-size: 1rem;
+        padding: 4px 20px;
+    }
+
+    .word-paragraph {
+        width: 98%;
+    }
+
+    .word, .underlined-word {
+        /* גודל פונט גמיש לפי רוחב המסך כדי שמילים ארוכות ייכנסו בשורה אחת */
+        font-size: clamp(1rem, 4.5vw, 1.4rem);
+        gap: clamp(0.2rem, 1.5vw, 0.6rem);
+    }
+
+    .underlined-word {
+        letter-spacing: clamp(0.2rem, 1.5vw, 0.4rem);
+    }
+
+    .keyboard {
+        width: 96%;
+        top: 60%;
+        gap: 5px;
+        left: -2%;
+    }
+
+    .row {
+        gap: 4px;
     }
 
     .charBtn {
-        font-size: 1rem;
+        width: 8%;
+        min-width: 28px;
+        height: 40px;
+        font-size: 1.4rem;
+        border-radius: 6px;
+    }
+}
+
+/* ==========================================
+   הגדרות רספונסיביות - מקסימום 320px
+   ========================================== */
+@media screen and (max-width: 320px) {
+    .title {
+        font-size: 1.3rem;
+        top: 5%;
+    }
+
+    .countdown-timer, .score {
+        font-size: 0.95rem;
+        width: 65px;
+        height: 28px;
+    }
+
+    .toggle {
+        width: 125px;
+        height: 26px;
+        top: 14%;
+    }
+
+    .toggle button {
+        font-size: 0.7rem;
+    }
+
+    .guess {
+        font-size: 1.1rem;
+    }
+
+    .hintBtn {
+        font-size: 0.85rem;
+        padding: 3px 14px;
+    }
+
+    .word, .underlined-word {
+        font-size: clamp(0.85rem, 4vw, 1.1rem);
+        gap: 0.2rem;
+    }
+
+    .underlined-word {
+        letter-spacing: 0.15rem;
+    }
+
+    .keyboard {
+        width: 100%;
+        top: 58%;
+        gap: 3px;
+    }
+
+    .row {
+        gap: 2px;
+    }
+
+    .charBtn {
+        height: 32px;
+        font-size: 1.1rem;
+        border-radius: 4px;
     }
 }
