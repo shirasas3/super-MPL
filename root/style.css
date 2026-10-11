@@ -1,15 +1,15 @@
 @font-face {
     font-family: horev;
-    src: url("assets/fonts/Horev CLM Heavy.ttf");
+    src: url("../assets/fonts/Horev CLM Heavy.ttf");
 }
 
 @font-face {
     font-family: alef;
-    src: url("assets/fonts/Gveret Levin Alef Alef Alef.ttf");
+    src: url("../assets/fonts/Gveret Levin Alef Alef Alef.ttf");
 }
 
 body {
-    background-image: url("assets/media/background.png");
+    background-image: url("../assets/media/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     user-select: none;
