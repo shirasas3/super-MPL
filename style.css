@@ -494,5 +494,9 @@ button {
     #part2 , #part3 {
         width: 4%;
     }
+
+    button {
+        touch-action: manipulation; 
+    }
 }
 
